@@ -31,8 +31,6 @@ import de.thomas_oster.liblasercut.VectorCommand.CmdType;
 import java.io.BufferedReader;
 import java.io.BufferedOutputStream;
 import java.io.DataOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintStream;
@@ -48,7 +46,7 @@ import java.util.ArrayList;
 public class Ruida extends LaserCutter
 {
   private ByteStream stream;
-  private File file;
+  //private File file;
 
   private static final int MINFOCUS = -500; //Minimal focus value (not mm)
   private static final int MAXFOCUS = 500; //Maximal focus value (not mm)
@@ -301,8 +299,8 @@ public class Ruida extends LaserCutter
     checkJob(job);
     job.applyStartPoint();
 
-    this.file = new File(getFilename());
-    this.stream = new ByteStream(new FileOutputStream(file));
+    //this.file = new File(getFilename());
+    //this.stream = new ByteStream(new FileOutputStream(file));
       
     /* PrepFilename, SetFilename, <filename>, 00 */
     stream.hex("E802").hex("E701").string(job.getTitle()).hex("00");
